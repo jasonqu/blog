@@ -1,0 +1,180 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="a static site generator powered by sbt, twirl, bootstrap and bootflat">
+    <meta name="author" content="jasonqu">
+    <!--<meta name="description" content="{{meta_description}}" />-->
+    <!-- TODO description -->
+    
+    <title>Archive</title>
+
+    <!-- Le styles -->
+    
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/app.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/bootstrap.3.3.6.min.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/bootflat-2.0.4.min.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/octicons.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/prism.css"> 
+    <link rel="shortcut icon" type="image/png" href="/blog/images/favicon.png">
+
+    <link href="atom.xml" type="application/atom+xml" rel="alternate" title="a static site generator powered by sbt, twirl, bootstrap and bootflat ATOM Feed">
+    <link href="rss.xml" type="application/rss+xml" rel="alternate" title="a static site generator powered by sbt, twirl, bootstrap and bootflat RSS Feed">
+  </head>
+  <body>
+
+    <div id="wrap">
+      <div class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      
+      <a class="navbar-brand pull-left" href="/"><img src="/blog/images/blog.png" class="navbar-logo" alt="logo"/>&nbsp;jasonqu&#x27;s blog</a>
+      
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+        <!--todo refine nav-{{slug}} and current active-->
+      </ul>
+      <!--todo rss blog.url-->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/rss.xml"><span class="octicon octicon-rss"></span> RSS</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+      
+        
+<div class="container-fluid container-abitabove">
+  <div class="row">
+    <!--todo blog.cover-->
+    
+    
+      <div class="col-lg-12 centered text-center container-withcover" style="background-image: url(/blog/images/cover.jpg);">
+    
+    <!--<div class="col-lg-12 centered text-center container-withcover no-cover">-->
+      <!--<div class="col-lg-12 centered text-center container-withcover" style="background-image: url(/blog/images/cover.jpg);">-->
+      <!--todo blog.logo-->
+      
+      
+        <img src="/blog/images/blog.png" alt="jasonqu&#x27;s blog Logo" class="blog-logo"><br>
+      
+      
+        document
+      
+    </div>
+  </div>
+</div>
+      
+
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-12 centered">
+          
+            
+<main>
+	<div class="timeline">
+		<dl>
+			
+			<dt>2016 一月</dt>
+			
+			
+			<dd class="pos-right clearfix">
+				<div class="circ ">
+				</div>
+				<div class="time">一月 15</div>
+                    <!--<span data-toggle="tooltip" data-original-title="{{date format='YYYY-MM-DD'}} at {{date format='HH:mm'}}" title="">-->
+						<!--2016-01-15-->
+                        <!-- todo {{date timeago=true}} in javascript and the width -->
+                    <!--</span>-->
+				<div class="events">
+					<!--<div class="pull-left">-->
+						<!--<img class="events-object img-rounded" src="img/photo-1.jpg">-->
+					<!--</div>-->
+					<div class="events-body">
+						<h3 class="events-heading">
+							<a href="posts/2016-01-15-bootlog详解.md.html">Bootlog详解</a>
+						</h3>
+						<h4 class="events-heading">
+							
+							<a href="/blog/tag/bootlog.html">
+								<span class="label tag-bootlog label-default">
+									<i class="glyphicon glyphicon-tag"></i> bootlog </span></a>
+							&nbsp;
+							
+							<a href="/blog/tag/document.html">
+								<span class="label tag-document label-primary">
+									<i class="glyphicon glyphicon-tag"></i> document </span></a>
+							&nbsp;
+							
+						</h4>
+						<p>
+# bootlog
+
+bootlog是基于sbt、twirl、pegdown、bootstrap和bootflat创建的一个静态博客生成器，目标用户是scala、java以及github使用者。
+
+bootlog提供了两个示例，分别展示了[bootstrap主题](http://jasonqu.github.io/bootlogDemo/)和[bootflat的主题](http://jasonq &hellip;</p>
+					</div>
+				</div>
+			</dd>
+			
+			
+			
+		</dl>
+	</div>
+	
+<nav>
+    <ul class="pager">
+        <li class="previous disabled">
+        
+            <a href="index.html" onclick="return false;"><span aria-hidden="true">&larr;</span> Newer</a>
+        
+        </li>
+        <li class="page-number">Page 1 of 1</li>
+        <li class="next disabled" onclick="return false;">
+        
+        <a href="index1.html">Older <span aria-hidden="true">&rarr;</span></a>
+        
+        </li>
+    </ul>
+</nav>
+</main>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <footer>
+    <div class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 centered">
+                    &copy; Copyright jasonqu &bull; powered by <a href="https://github.com/jasonqu/bootlog">bootlog</a>; <a href="https://github.com/fabienwang/Ghost-Flat"><span class="octicon octicon-mark-github"></span> Ghost-Flat</a> theme
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+    <!-- {% include JB/analytics %} -->
+    <!-- todo google prettify refactor -->
+    
+     <script src="/blog/javascripts/jquery-1.11.3.min.js" type="text/javascript"></script>  <script src="/blog/javascripts/bootstrap-3.3.6.min.js" type="text/javascript"></script>  <script src="/blog/js/prism.js" type="text/javascript"></script>  <script src="/blog/js/app.js" type="text/javascript"></script> 
+  </body>
+</html>
+

@@ -1,0 +1,203 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="a static site generator powered by sbt, twirl, bootstrap and bootflat">
+    <meta name="author" content="jasonqu">
+    <!--<meta name="description" content="{{meta_description}}" />-->
+    <!-- TODO description -->
+    
+    <title>Bootlog详解</title>
+
+    <!-- Le styles -->
+    
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/app.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/bootstrap.3.3.6.min.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/bootflat-2.0.4.min.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/octicons.css"> 
+    <link rel="stylesheet" media="all" href="/blog/stylesheets/prism.css"> 
+    <link rel="shortcut icon" type="image/png" href="/blog/images/favicon.png">
+
+    <link href="atom.xml" type="application/atom+xml" rel="alternate" title="a static site generator powered by sbt, twirl, bootstrap and bootflat ATOM Feed">
+    <link href="rss.xml" type="application/rss+xml" rel="alternate" title="a static site generator powered by sbt, twirl, bootstrap and bootflat RSS Feed">
+  </head>
+  <body>
+
+    <div id="wrap">
+      <div class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      
+      <a class="navbar-brand pull-left" href="/"><img src="/blog/images/blog.png" class="navbar-logo" alt="logo"/>&nbsp;jasonqu&#x27;s blog</a>
+      
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        
+        <!--todo refine nav-{{slug}} and current active-->
+      </ul>
+      <!--todo rss blog.url-->
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/rss.xml"><span class="octicon octicon-rss"></span> RSS</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+      
+        
+
+<div class="container-fluid container-abitabove">
+  <div class="row">
+    <!--todo post.image  {{#if post.image}}background-image: url({{post.image}});{{/if}}-->
+    
+    
+      <div class="col-lg-12 centered text-center container-withcover no-cover">
+    
+    <div class="col-lg-12 centered text-center container-withcover no-cover">
+      <h1>Bootlog详解 <small>Supporting tagline</small></h1>
+      <!--{{^if post.page}}-->
+      <!--<h5>-->
+        <!--<time datetime="{{date format='YYYY-MM-DD'}}"><span class="mega-octicon octicon-calendar"></span> {{date format="YYYY-MM-DD"}} at {{date format="HH:mm"}}</time>-->
+      <!--</h5>-->
+      <!--{{/if}}-->
+      
+      <a href="/blog/tag/bootlog.html">
+        <span class="label tag-bootlog label-default">
+          <i class="glyphicon glyphicon-tag"></i> bootlog </span></a>
+      &nbsp;
+      
+      <a href="/blog/tag/document.html">
+        <span class="label tag-document label-primary">
+          <i class="glyphicon glyphicon-tag"></i> document </span></a>
+      &nbsp;
+      
+    </div>
+  </div>
+</div>
+      
+
+      <div class="container">
+        <div class="row">
+          
+          <div class="col-lg-10 col-lg-offset-1 centered">
+          
+            
+
+<main>
+  <article class="">
+    <section class="posts">
+      <h1>bootlog</h1>
+<p>bootlog是基于sbt、twirl、pegdown、bootstrap和bootflat创建的一个静态博客生成器，目标用户是scala、java以及github使用者。</p>
+<p>bootlog提供了两个示例，分别展示了<a href="http://jasonqu.github.io/bootlogDemo/">bootstrap主题</a>和<a href="http://jasonqu.github.io/bootlogFlatDemo/">bootflat的主题</a>。 如果想快速创建自己的博客，可以参考这两种博客中的介绍。</p>
+<h2>使用方法</h2>
+<p>在你的<code>project/plugins.sbt</code>中添加：</p>
+<pre><code>addSbtPlugin(&quot;com.github.bootlog&quot; % &quot;bootlog&quot; % &quot;0.1.0&quot;)
+
+addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-site&quot; % &quot;0.8.1&quot;)
+
+resolvers += &quot;jgit-repo&quot; at &quot;http://download.eclipse.org/jgit/maven&quot;
+
+addSbtPlugin(&quot;com.typesafe.sbt&quot; % &quot;sbt-ghpages&quot; % &quot;0.5.4&quot;)
+</code></pre>
+<blockquote>
+  <p><em>注意</em>：这里支持的sbt版本是0.13</p>
+</blockquote>
+<p>然后在你的<code>build.sbt</code>文件中启动BootLog的插件，类似这样：</p>
+<pre><code>lazy val bootlogDemo = (project in file(&quot;.&quot;))
+  .enablePlugins(BootLogPlugin)
+</code></pre>
+<p>然后加上<code>sbt-site</code>和<code>sbt-ghpages</code>的配置就可以使用了</p>
+<pre><code>site.settings
+
+// KEEP This, or else fonts file will not be copied by sbt-ghpages
+includeFilter in SiteKeys.makeSite := &quot;*.html&quot; | &quot;*.css&quot; | &quot;*.png&quot; | &quot;*.jpg&quot; | &quot;*.gif&quot; | &quot;*.js&quot; | &quot;*.swf&quot; | &quot;*.ttf&quot; | &quot;*.woff&quot; | &quot;*.woff2&quot;
+
+ghpages.settings
+
+git.remoteRepo := &quot;https://github.com/{my github account}/{my blog repo}.git&quot;
+</code></pre>
+<p>在<code>conf\application.conf</code>中写入自己的参数，在<code>_content\_posts</code>中编辑自己的文章。 完成后进入<code>sbt</code>，运行<code>makeMD</code>生成网站，使用<code>previewSite</code>预览自己的网站，最后使用<code>ghpagesPushSite</code>将网站发布到github。</p>
+<h2>配置参数</h2>
+<h3>sbt Setting</h3>
+<p>bootlog提供的sbt setting如下，可以通过修改<code>build.sbt</code>来修改这些配置：</p>
+<pre><code>val bootlogConfigFile = settingKey[File](&quot;the user config that will be rendered in generated pages&quot;)
+val generateDir = settingKey[File](&quot;the output dir for bootlog.&quot;)
+val assetResourceMapping = settingKey[Seq[(String, String)]](&quot;the user config that will be rendered in generated pages&quot;)
+val previewDrafts = settingKey[Boolean](&quot;if this is true, then generated site will include the posts in _drafts&quot;)
+</code></pre>
+<h4><code>bootlogConfigFile</code></h4>
+<p><code>bootlog</code>读取的配置文件，默认是<code>conf\application.conf</code>。</p>
+<p>要设置为根目录下的<code>blog.conf</code>，可以这样修改：<code>bootlogConfigFile := baseDirectory.value / &quot;blog.conf&quot;</code></p>
+<h4><code>generateDir</code></h4>
+<p><code>makeMD</code>输出的目录，默认是<code>src/site</code>，这是为了能无缝衔接<code>sbt-site</code>。</p>
+<p>如果要修改<code>generateDir</code>，则需要使其输出可以配<code>sbt-site</code>读取。 可以使用<code>generateDir := SiteKeys.siteSourceDirectory.value</code>将两个配置连接起来。</p>
+<h4><code>assetResourceMapping</code></h4>
+<p><code>assetResourceMapping</code>用来保存网站需要的静态文件，如js、css、字体等。</p>
+<p>这个映射的key将要被拷贝到的文件；而value是资源的位置，如果以<code>/</code>开头，则将在类路径中查找，否则将在工程目录中查找。</p>
+<p>为了减少用户的配置，bootlog把默认的资源都打包在插件或插件依赖的webjar中。</p>
+<pre><code>  &quot;org.webjars.bower&quot; % &quot;bootstrap&quot; % &quot;3.3.6&quot;,
+  &quot;org.webjars.bower&quot; % &quot;Bootflat&quot; % &quot;2.0.4&quot;,
+  &quot;org.webjars.bower&quot; % &quot;jquery&quot; % &quot;1.11.3&quot;,
+  &quot;org.webjars.bower&quot; % &quot;octicons&quot; % &quot;3.1.0&quot;
+</code></pre>
+<p>要使用打包在webjar中的资源，可以像下面这样：</p>
+<pre><code>assetResourceMapping += (&quot;stylesheets/bootstrap.3.3.6.min.css&quot; -&gt; &quot;/META-INF/resources/webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css&quot;)
+</code></pre>
+<p>如果用户有自定义的资源文件（比如使用bower下载的资源文件），可以像下面这样使用：</p>
+<pre><code>assetResourceMapping += (&quot;stylesheets/style.css&quot; -&gt; &quot;assets/css/style.css&quot;),
+</code></pre>
+<p>此时将把工程目录的<code>assets/css/style.css</code>文件，拷贝到<code>generateDir / &quot;stylesheets/style.css&quot;</code>。</p>
+<h4><code>previewDrafts</code></h4>
+<p>如果需要预览<code>_content/_drafts</code>目录下的markdown文件，则需要修改该配置：<code>previewDrafts := true</code></p>
+<h3>conf 文件介绍</h3>
+<p>bootlog使用<a href="https://github.com/typesafehub/config">typesafe config</a>作为配置文件库，其格式很既灵活有易读，参见<a href="https://github.com/typesafehub/config#using-hocon-the-json-superset">HOCON</a>。</p>
+<p>bootlog支持的配置详见<a href="https://github.com/jasonqu/bootlog/blob/master/src/main/resources/reference.conf">源代码</a>，需要重点关注的是：</p>
+<ul>
+  <li>rootPath：该静态网站将被放在主站的哪个目录下。</li>
+  <li>production_url：该静态网站的主站链接</li>
+</ul>
+<p>具体使用示例，可以参考<a href="http://jasonqu.github.io/bootlogDemo/">bootlogDemo</a>和<a href="http://jasonqu.github.io/bootlogFlatDemo/">bootlogFlatDemo</a>。</p>
+<h3>许可证</h3>
+<p><a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License Version 2.0</a></p>
+      <hr />
+    </section>
+  </article>
+</main>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer">
+      <footer>
+    <div class="footer text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-10 col-lg-offset-1 centered">
+                    &copy; Copyright jasonqu &bull; powered by <a href="https://github.com/jasonqu/bootlog">bootlog</a>; <a href="https://github.com/fabienwang/Ghost-Flat"><span class="octicon octicon-mark-github"></span> Ghost-Flat</a> theme
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+    <!-- {% include JB/analytics %} -->
+    <!-- todo google prettify refactor -->
+    
+     <script src="/blog/javascripts/jquery-1.11.3.min.js" type="text/javascript"></script>  <script src="/blog/javascripts/bootstrap-3.3.6.min.js" type="text/javascript"></script>  <script src="/blog/js/prism.js" type="text/javascript"></script>  <script src="/blog/js/app.js" type="text/javascript"></script> 
+  </body>
+</html>
+

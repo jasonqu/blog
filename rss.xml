@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>jasonqu&apos;s blog</title>
+        <description>jasonqu&apos;s blog - jasonqu</description>
+        <link>http://jasonqu.github.io/rss.xml</link>
+        <link>http://jasonqu.github.io</link>
+        <lastBuildDate>2016-01-15T18:42:31.252+08:00</lastBuildDate>
+        <pubDate>2016-01-15T18:42:31.253+08:00</pubDate>
+        <ttl>1800</ttl>
+
+ 
+        <item>
+                <title>Bootlog flat theme快速上手</title>
+                <description>&lt;p&gt;欢迎阅读&lt;a href=&quot;https://github.com/jasonqu/bootlog&quot;&gt;bootlog&lt;/a&gt;的快速上手说明，完整的使用说明和文档请参见&lt;a href=&quot;https://github.com/jasonqu/bootlog&quot;&gt;bootlog in github&lt;/a&gt;。 本示例的代码都保存在&lt;a href=&quot;https://github.com/jasonqu/bootlogFlatDemo&quot;&gt;bootlogFlatDemo&lt;/a&gt;项目中。&lt;/p&gt;
+&lt;h2&gt;bootlog是什么&lt;/h2&gt;
+&lt;p&gt;bootlog是基于sbt、twirl、pegdown、bootstrap和bootflat创建的一个静态博客生成器，目标用户是scala、java以及github使用者。&lt;/p&gt;
+&lt;p&gt;bootlog提供了两个示例，分别展示了&lt;a href=&quot;http://jasonqu.github.io/bootlogDemo/&quot;&gt;bootstrap主题&lt;/a&gt;和&lt;a href=&quot;http://jasonqu.github.io/bootlogFlatDemo/&quot;&gt;bootflat的主题&lt;/a&gt;&lt;/p&gt;
+&lt;h2&gt;快速上手&lt;/h2&gt;
+&lt;p&gt;bootlog是一个sbt插件，所以这里假设您使用sbt作为自己的常用构建工具之一。&lt;/p&gt;
+&lt;h3&gt;几分钟完成博客创建&lt;/h3&gt;
+&lt;h4&gt;第一步，开通github主页&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;注册&lt;a href=&quot;https://github.com/&quot;&gt;github&lt;/a&gt;账户&lt;/li&gt;
+  &lt;li&gt;创建主页仓库：&lt;code&gt;{username}.github.io&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;创建博客仓库：&lt;code&gt;blog&lt;/code&gt;【记得创建它的&lt;code&gt;gh-pages&lt;/code&gt;分支】&lt;/li&gt;
+  &lt;li&gt;详细过程参见&lt;a href=&quot;https://help.github.com/articles/user-organization-and-project-pages/&quot;&gt;github帮助&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;第二步，fork本工程&lt;/h4&gt;
+&lt;p&gt;可以选择在github上直接fork&lt;a href=&quot;https://github.com/jasonqu/bootlogFlatDemo&quot;&gt;本工程&lt;/a&gt;，或使用命令行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/jasonqu/bootlogDemo blog
+cd blog
+git remote set-url origin git@github.com:USERNAME/blog.git
+git push origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;第三步，修改参数&lt;/h4&gt;
+&lt;p&gt;打开&lt;code&gt;conf&lt;/code&gt;目录下的&lt;code&gt;application.conf&lt;/code&gt;，将其中的&lt;code&gt;rootPath&lt;/code&gt;修改为自己的仓库名，如&lt;code&gt;blog&lt;/code&gt;；&lt;code&gt;production_url&lt;/code&gt;修改为自己的github网址—— &lt;code&gt;http://{username}.github.io&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;然后将&lt;code&gt;build.sbt&lt;/code&gt;的&lt;code&gt;git.remoteRepo&lt;/code&gt;修改为自己的仓库即可——&lt;code&gt;&amp;quot;https://github.com/{username}/{rootPath}.git&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;第四步，写博客&lt;/h4&gt;
+&lt;p&gt;现在万事俱备，只需要在&lt;code&gt;_content/_posts&lt;/code&gt;下写自己的博客，使用&lt;code&gt;sbt ghpagesPushSite&lt;/code&gt;发布网站，然后就可以在 &lt;code&gt;http://{username}.github.io/{rootPath}/&lt;/code&gt;静静地欣赏自己的大作了:)&lt;/p&gt;
+&lt;p&gt;如果遇到问题，欢迎来&lt;a href=&quot;https://github.com/jasonqu/bootlog/issues&quot;&gt;bootlog&lt;/a&gt;提issue。&lt;/p&gt;</description>
+                <link>http://jasonqu.github.io/post/2016-01-15-bootlog-tutorial.md.html</link>
+                <guid>http://jasonqu.github.io/post/2016-01-15-bootlog-tutorial.md.html</guid>
+                <pubDate>2016-01-15T00:00:00.000+08:00</pubDate>
+        </item>
+
+        <item>
+                <title>Bootlog详解</title>
+                <description>&lt;h1&gt;bootlog&lt;/h1&gt;
+&lt;p&gt;bootlog是基于sbt、twirl、pegdown、bootstrap和bootflat创建的一个静态博客生成器，目标用户是scala、java以及github使用者。&lt;/p&gt;
+&lt;p&gt;bootlog提供了两个示例，分别展示了&lt;a href=&quot;http://jasonqu.github.io/bootlogDemo/&quot;&gt;bootstrap主题&lt;/a&gt;和&lt;a href=&quot;http://jasonqu.github.io/bootlogFlatDemo/&quot;&gt;bootflat的主题&lt;/a&gt;。 如果想快速创建自己的博客，可以参考这两种博客中的介绍。&lt;/p&gt;
+&lt;h2&gt;使用方法&lt;/h2&gt;
+&lt;p&gt;在你的&lt;code&gt;project/plugins.sbt&lt;/code&gt;中添加：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;addSbtPlugin(&amp;quot;com.github.bootlog&amp;quot; % &amp;quot;bootlog&amp;quot; % &amp;quot;0.1.0&amp;quot;)
+
+addSbtPlugin(&amp;quot;com.typesafe.sbt&amp;quot; % &amp;quot;sbt-site&amp;quot; % &amp;quot;0.8.1&amp;quot;)
+
+resolvers += &amp;quot;jgit-repo&amp;quot; at &amp;quot;http://download.eclipse.org/jgit/maven&amp;quot;
+
+addSbtPlugin(&amp;quot;com.typesafe.sbt&amp;quot; % &amp;quot;sbt-ghpages&amp;quot; % &amp;quot;0.5.4&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;em&gt;注意&lt;/em&gt;：这里支持的sbt版本是0.13&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;然后在你的&lt;code&gt;build.sbt&lt;/code&gt;文件中启动BootLog的插件，类似这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lazy val bootlogDemo = (project in file(&amp;quot;.&amp;quot;))
+  .enablePlugins(BootLogPlugin)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后加上&lt;code&gt;sbt-site&lt;/code&gt;和&lt;code&gt;sbt-ghpages&lt;/code&gt;的配置就可以使用了&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;site.settings
+
+// KEEP This, or else fonts file will not be copied by sbt-ghpages
+includeFilter in SiteKeys.makeSite := &amp;quot;*.html&amp;quot; | &amp;quot;*.css&amp;quot; | &amp;quot;*.png&amp;quot; | &amp;quot;*.jpg&amp;quot; | &amp;quot;*.gif&amp;quot; | &amp;quot;*.js&amp;quot; | &amp;quot;*.swf&amp;quot; | &amp;quot;*.ttf&amp;quot; | &amp;quot;*.woff&amp;quot; | &amp;quot;*.woff2&amp;quot;
+
+ghpages.settings
+
+git.remoteRepo := &amp;quot;https://github.com/{my github account}/{my blog repo}.git&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在&lt;code&gt;conf\application.conf&lt;/code&gt;中写入自己的参数，在&lt;code&gt;_content\_posts&lt;/code&gt;中编辑自己的文章。 完成后进入&lt;code&gt;sbt&lt;/code&gt;，运行&lt;code&gt;makeMD&lt;/code&gt;生成网站，使用&lt;code&gt;previewSite&lt;/code&gt;预览自己的网站，最后使用&lt;code&gt;ghpagesPushSite&lt;/code&gt;将网站发布到github。&lt;/p&gt;
+&lt;h2&gt;配置参数&lt;/h2&gt;
+&lt;h3&gt;sbt Setting&lt;/h3&gt;
+&lt;p&gt;bootlog提供的sbt setting如下，可以通过修改&lt;code&gt;build.sbt&lt;/code&gt;来修改这些配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;val bootlogConfigFile = settingKey[File](&amp;quot;the user config that will be rendered in generated pages&amp;quot;)
+val generateDir = settingKey[File](&amp;quot;the output dir for bootlog.&amp;quot;)
+val assetResourceMapping = settingKey[Seq[(String, String)]](&amp;quot;the user config that will be rendered in generated pages&amp;quot;)
+val previewDrafts = settingKey[Boolean](&amp;quot;if this is true, then generated site will include the posts in _drafts&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4&gt;&lt;code&gt;bootlogConfigFile&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;bootlog&lt;/code&gt;读取的配置文件，默认是&lt;code&gt;conf\application.conf&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;要设置为根目录下的&lt;code&gt;blog.conf&lt;/code&gt;，可以这样修改：&lt;code&gt;bootlogConfigFile := baseDirectory.value / &amp;quot;blog.conf&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;h4&gt;&lt;code&gt;generateDir&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;makeMD&lt;/code&gt;输出的目录，默认是&lt;code&gt;src/site&lt;/code&gt;，这是为了能无缝衔接&lt;code&gt;sbt-site&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;如果要修改&lt;code&gt;generateDir&lt;/code&gt;，则需要使其输出可以配&lt;code&gt;sbt-site&lt;/code&gt;读取。 可以使用&lt;code&gt;generateDir := SiteKeys.siteSourceDirectory.value&lt;/code&gt;将两个配置连接起来。&lt;/p&gt;
+&lt;h4&gt;&lt;code&gt;assetResourceMapping&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;assetResourceMapping&lt;/code&gt;用来保存网站需要的静态文件，如js、css、字体等。&lt;/p&gt;
+&lt;p&gt;这个映射的key将要被拷贝到的文件；而value是资源的位置，如果以&lt;code&gt;/&lt;/code&gt;开头，则将在类路径中查找，否则将在工程目录中查找。&lt;/p&gt;
+&lt;p&gt;为了减少用户的配置，bootlog把默认的资源都打包在插件或插件依赖的webjar中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  &amp;quot;org.webjars.bower&amp;quot; % &amp;quot;bootstrap&amp;quot; % &amp;quot;3.3.6&amp;quot;,
+  &amp;quot;org.webjars.bower&amp;quot; % &amp;quot;Bootflat&amp;quot; % &amp;quot;2.0.4&amp;quot;,
+  &amp;quot;org.webjars.bower&amp;quot; % &amp;quot;jquery&amp;quot; % &amp;quot;1.11.3&amp;quot;,
+  &amp;quot;org.webjars.bower&amp;quot; % &amp;quot;octicons&amp;quot; % &amp;quot;3.1.0&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;要使用打包在webjar中的资源，可以像下面这样：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;assetResourceMapping += (&amp;quot;stylesheets/bootstrap.3.3.6.min.css&amp;quot; -&amp;gt; &amp;quot;/META-INF/resources/webjars/bootstrap/3.3.6/dist/css/bootstrap.min.css&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果用户有自定义的资源文件（比如使用bower下载的资源文件），可以像下面这样使用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;assetResourceMapping += (&amp;quot;stylesheets/style.css&amp;quot; -&amp;gt; &amp;quot;assets/css/style.css&amp;quot;),
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;此时将把工程目录的&lt;code&gt;assets/css/style.css&lt;/code&gt;文件，拷贝到&lt;code&gt;generateDir / &amp;quot;stylesheets/style.css&amp;quot;&lt;/code&gt;。&lt;/p&gt;
+&lt;h4&gt;&lt;code&gt;previewDrafts&lt;/code&gt;&lt;/h4&gt;
+&lt;p&gt;如果需要预览&lt;code&gt;_content/_drafts&lt;/code&gt;目录下的markdown文件，则需要修改该配置：&lt;code&gt;previewDrafts := true&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;conf 文件介绍&lt;/h3&gt;
+&lt;p&gt;bootlog使用&lt;a href=&quot;https://github.com/typesafehub/config&quot;&gt;typesafe config&lt;/a&gt;作为配置文件库，其格式很既灵活有易读，参见&lt;a href=&quot;https://github.com/typesafehub/config#using-hocon-the-json-superset&quot;&gt;HOCON&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;bootlog支持的配置详见&lt;a href=&quot;https://github.com/jasonqu/bootlog/blob/master/src/main/resources/reference.conf&quot;&gt;源代码&lt;/a&gt;，需要重点关注的是：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;rootPath：该静态网站将被放在主站的哪个目录下。&lt;/li&gt;
+  &lt;li&gt;production_url：该静态网站的主站链接&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;具体使用示例，可以参考&lt;a href=&quot;http://jasonqu.github.io/bootlogDemo/&quot;&gt;bootlogDemo&lt;/a&gt;和&lt;a href=&quot;http://jasonqu.github.io/bootlogFlatDemo/&quot;&gt;bootlogFlatDemo&lt;/a&gt;。&lt;/p&gt;
+&lt;h3&gt;许可证&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.apache.org/licenses/LICENSE-2.0&quot;&gt;Apache License Version 2.0&lt;/a&gt;&lt;/p&gt;</description>
+                <link>http://jasonqu.github.io/post/2016-01-15-bootlog详解.md.html</link>
+                <guid>http://jasonqu.github.io/post/2016-01-15-bootlog详解.md.html</guid>
+                <pubDate>2016-01-15T00:00:00.000+08:00</pubDate>
+        </item>
+
+
+</channel>
+</rss>
